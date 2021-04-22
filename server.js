@@ -17,7 +17,9 @@ app.use(function(req, res, next){
     next()
 })
 
-app.listen(4000, () => {
+const port = process.env.PORT || 6060
+
+app.listen(port, () => {
   console.log("El servidor está inicializado en el puerto 4000");
 });
 
