@@ -94,16 +94,14 @@ app.post('/create/todos', (req, res) => {
 app.post('/update/todos', (req, res) => {
     const {
       title,
-      status,
       id
     } = req.body;
 
     const updateTodos = 
     `
-    UPDATE todos
-    SET title = '${title}',
-	status = ${status}
-    WHERE id = ${id}
+        UPDATE todos
+        SET title = '${title}'
+        WHERE id = ${id}
     `
 
     dbServer.query(updateTodos, { type: dbServer.QueryTypes.UPDATE })
