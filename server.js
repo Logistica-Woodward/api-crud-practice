@@ -140,3 +140,31 @@ app.get('/delete/todos/:id', (req, res) => {
         })
     })
 });
+
+app.post('/update/todos/status', (req, res) => {
+    const {
+      status,
+      id
+    } = req.body;
+
+    const statusTodos = 
+    `
+        UPDATE todos
+        SET status = ${status}
+        WHERE id = ${id}
+    `
+
+    dbServer.query(updateTodos, { type: dbServer.QueryTypes.UPDATE })
+    .then((result) => {
+        res.send({
+            result,
+            status: 200,
+        })
+    })
+    .catch((err) => {
+        res.send({
+            result: err,
+            status: 301,
+        })
+    })
+});
