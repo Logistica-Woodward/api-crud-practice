@@ -1,9 +1,11 @@
+// Dependencies
 const express = require("express");
 const compression   = require('compression')
 const Sequelize = require('sequelize');
 const bodyParser = require('body-parser');
-const app = express();
 
+// Server
+const app = express();
 app.use(compression())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
@@ -17,17 +19,18 @@ app.use(function(req, res, next){
     next()
 })
 
-const port = process.env.PORT || 6060
+const port = process.env.PORT || 4000
 
 app.listen(port, () => {
   console.log("El servidor está inicializado en el puerto 4000");
 });
 
-const dbServer = new Sequelize('todo_development', 'root', '', {
-    host: 'localhost',
+const dbServer = new Sequelize('tododevelopment', 'tododevelopment', 'Mw3O76KX_gB-', {
+    host: 'den1.mysql4.gear.host',
     dialect: 'mysql'
 });
 
+// Routes
 app.get('/status', function (req, res) {
     dbServer
         .authenticate()
