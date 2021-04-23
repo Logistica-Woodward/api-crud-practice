@@ -154,7 +154,7 @@ app.post('/update/todos/status', (req, res) => {
         WHERE id = ${id}
     `
 
-    dbServer.query(updateTodos, { type: dbServer.QueryTypes.UPDATE })
+    dbServer.query(statusTodos, { type: dbServer.QueryTypes.UPDATE })
     .then((result) => {
         res.send({
             result,
